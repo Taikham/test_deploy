@@ -31,15 +31,16 @@ const allowedOrigins = [
   // Configure CORS
   app.use(
     cors({
-      origin: (origin, callback) => {
-        // Allow requests with no origin (e.g., mobile apps or curl)
-        if (!origin) return callback(null, true);
-        if (allowedOrigins.includes(origin)) {
-          callback(null, true); // Allow the origin
-        } else {
-          callback(new Error("Not allowed by CORS")); // Block the origin
-        }
-      },
+     origin: (origin, callback) => {
+  // Allow requests with no origin (e.g., mobile apps or cURL)
+  if (!origin) return callback(null, true);
+  if (allowedOrigins.includes(origin)) {
+    callback(null, true);
+  } else {
+    console.error(`CORS blocked for origin: ${origin}`); // Log origin ที่ถูกบล็อก
+    callback(new Error("Not allowed by CORS"));
+  }
+},
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true, // Allow cookies or Authorization headers
     })
