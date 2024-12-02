@@ -30,17 +30,19 @@ const allowedOrigins = [
   
   // Configure CORS
   app.use(
-    cors({
-     origin: (origin, callback) => {
-  // Allow requests with no origin (e.g., mobile apps or cURL)
-  if (!origin) return callback(null, true);
-  if (allowedOrigins.includes(origin)) {
-    callback(null, true);
-  } else {
-    console.error(`CORS blocked for origin: ${origin}`); // Log origin ที่ถูกบล็อก
-    callback(new Error("Not allowed by CORS"));
-  }
-},
+  cors({
+    origin: (origin, callback) => {
+      console.log("Request Origin:", origin); // Log Origin ที่มาถึง
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true); // Allow
+      } else {
+        console.error(`Blocked by CORS: ${origin}`); // Log Origin ที่ถูกบล็อก
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true,
+  })
+);
       methods: ["GET", "POST", "PUT", "DELETE"],
       credentials: true, // Allow cookies or Authorization headers
     })
