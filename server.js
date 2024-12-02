@@ -23,8 +23,10 @@ app.use(express.json());
 
 const allowedOrigins = [
     "https://mini-project-admin.vercel.app",
+    "https://mini-project-user.vercel.app"
     "http://localhost:5175", // For local development
-    "https://mini-project-admin-ben-taikhams-projects.vercel.app", // For local development
+    "https://mini-project-admin-ben-taikhams-projects.vercel.app",
+    "https://mini-project-user-ben-taikhams-projects.vercel.app", // For local development
   ];
   
   // Configure CORS
