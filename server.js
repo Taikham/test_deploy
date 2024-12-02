@@ -23,6 +23,7 @@ app.use(express.json());
 
 const allowedOrigins = [
     "https://artnakkk-frontend-admin.vercel.app",
+    "https://mini-project-admin-3wvhh2yqk-ben-taikhams-projects.vercel.app/",
     "http://localhost:5175", // For local development
     "http://localhost:5176", // For local development
   ];
